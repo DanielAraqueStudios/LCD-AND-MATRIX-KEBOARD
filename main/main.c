@@ -188,6 +188,7 @@ static esp_err_t temperature_sensor_init(void);
 static float read_temperature_sensor(void);
 static void update_grill_display(void);
 static bool is_temperature_in_range(float temp, cooking_level_t level);
+static bool is_temperature_in_safe_range(int temperature);
 static cooking_level_t determine_meat_term_from_temperature(int temperature);
 static void handle_temperature_input(char key);
 static void process_temperature_input(void);
@@ -574,7 +575,7 @@ static void update_grill_display(void)
                 }
                 hd44780_gotoxy(&lcd, 0, 1);
                 // Show warning for unsafe temperatures
-                hd44780_puts(&lcd, "OH! OH! BE CAREFUL");
+                hd44780_puts(&lcd, "OH!.OH!.BE CAREFUL");
             }
             break;
             
